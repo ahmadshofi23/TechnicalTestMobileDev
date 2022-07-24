@@ -30,9 +30,10 @@ class DetailProductController extends GetxController {
 
   Future addChart() async {
     try {
-      String uid = products.id.toString();
+      String orderId = DateTime.now().toIso8601String();
       var data = firestore.collection("transaksi")
-        ..doc(uid).set({
+        ..doc(orderId).set({
+          "produkId": products.id,
           "name": products.title,
           "harga": products.price,
           "images": products.image,
